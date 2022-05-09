@@ -76,7 +76,7 @@ export const StyledLogo = styled.img`
 
 export const StyledImg = styled.img`
   box-shadow: 0px 5px 11px 2px rgba(0, 0, 0, 0.7);
-  border: 4px dashed var(--secondary);
+ 
   background-color: var(--accent);
   border-radius: 100%;
   width: 200px;
@@ -193,55 +193,170 @@ function App() {
     getData();
   }, [blockchain.account]);
 
+  
   return (
-    <s.Screen>
-      <s.Container
-        flex={1}
-        ai={"center"}
-        style={{ padding: 24, backgroundColor: "var(--primary)" }}
-        image={CONFIG.SHOW_BACKGROUND ? "/config/images/bg.png" : null}
-      >
-        <StyledLogo alt={"logo"} src={"/config/images/logo.png"} />
-        <s.SpacerSmall />
-        <ResponsiveWrapper flex={1} style={{ padding: 24 }} test>
-          <s.Container flex={1} jc={"center"} ai={"center"}>
-            <StyledImg alt={"example"} src={"/config/images/example.gif"} />
-          </s.Container>
-          <s.SpacerLarge />
-          <s.Container
-            flex={2}
-            jc={"center"}
-            ai={"center"}
-            style={{
-              backgroundColor: "var(--accent)",
-              padding: 24,
-              borderRadius: 24,
-              border: "4px dashed var(--secondary)",
-              boxShadow: "0px 5px 11px 2px rgba(0,0,0,0.7)",
-            }}
-          >
-            <s.TextTitle
-              style={{
-                textAlign: "center",
-                fontSize: 50,
-                fontWeight: "bold",
-                color: "var(--accent-text)",
-              }}
-            >
-              {data.totalSupply} / {CONFIG.MAX_SUPPLY}
-            </s.TextTitle>
-            <s.TextDescription
-              style={{
-                textAlign: "center",
-                color: "var(--primary-text)",
-              }}
-            >
-              <StyledLink target={"_blank"} href={CONFIG.SCAN_LINK}>
+    <div className="main">
+    <header>
+        <div className="logo">
+            <a className="logo" href="#"><img src="./config/images/giphy.gif" alt=""/></a>
+        </div>
+        
+        <div className="links">
+            <a href="#project">THE PROJECT</a>
+            <a href="#roadmap">ROADMAP</a>
+            <a href="#team">TEAM</a>
+          
+                      
+                          <button onClick={(e) => {
+                                e.preventDefault();
+                                dispatch(connect());
+                                getData();
+                              }}>{blockchain.account ? <p className="account"> {blockchain.account}</p> : <p>Connect Wallet</p>}</button>
+                            
+                         
+            <div className="links">
+                <a href="https://discord.gg/xMzSrvs2fb" target="_blank"><i className="fab fa-discord"></i></a>
+                <a href="https://twitter.com/M3taMartians" target="_blank"><i className="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div id="landing-page">
+            <h1>M3TA MARTIANS IS TAKING OVER</h1>
+            <div id="countdown">
+                <div className="countdown-days">
+                    <p className="days"></p>
+                    <p className="accent">DAYS</p>
+                </div>
+                <div className="countdown-hours">
+                    <p className="hours"></p>
+                    <p className="accent">HOURS</p>
+                </div>
+                <div className="countdown-minutes">
+                    <p className="minutes"></p>
+                    <p className="accent">MINUTES</p>
+                </div>
+                <div className="countdown-seconds">
+                    <p className="seconds"></p>
+                    <p className="accent">SECONDS</p>
+                </div>
+         </div>
+
+         <button className="landing-page"><a href="#project"> THE MISSION </a></button>
+
+        </div>
+        
+        <div id="project">
+            <div className="col-left">
+                <img src="./config/images/promo.gif" alt="M3TA MARTIANS"/>
+            </div>
+            <div className="col-right">
+                <h2 className="accent">THE PROJECT:  {data.totalSupply} / {CONFIG.MAX_SUPPLY}</h2>
+                <h2 className="accent">0.05 ETH</h2>
+                <p> 5000 generated NFT's, M3TA MARTIANS are set to invade you. Looking for a way back to Mars when they detoured 
+                    to meet the earth leader, Elon Musk and live by the motto 'What Would Elon Do.' Each unique, these aliens have 
+                    touched down looking to integrate with reality using accessories as traits that add to their rarity. Join our whitelist
+                    to gain access Dec 14th for our presale, after which, as we hit 80% of sales, our rarity list will be released on the website, 
+                    rarity.com & other NFT collectible sites.
+                </p>
+                <p style={{marginTop: "1rem"}}>Look out for the Ethereum Gold Chain, those who obtain this NFT will receive an airdrop of an avatar that can be used 
+                  in an already established Metaverse</p>
+            </div>
+        </div>
+
+        <div id="roadmap">
+            <h1>ROADMAP</h1>
+            <div className="timeline">
+                <div className="container left">
+                  <div className="date">PHASE 1</div>
+                  <i className="icon">🚀</i>
+                  <div className="content">
+                    <h2 className="secondary-accent">Embark on our journey</h2>
+                    <p>
+                        Starting campaigns on Twitter and Discord. Getting people aware of the M3TA MARTIANS and their impending arrival!
+                    </p>
+                  </div>
+                </div>
+                <div className="container right">
+                  <div className="date">PHASE 2</div>
+                  <i className="icon">📃</i>
+                  <div className="content">
+                    <h2 className="secondary-accent">Whitelist</h2>
+                    <p>
+                      Those on the whitelist will have the ability to buy M3TA MARTIANS at a discounted price before launch. This will take place Dec 14th
+                    </p>
+                  </div>
+                </div>
+                <div className="container left">
+                  <div className="date">PHASE 3</div>
+                  <i className="icon">🎁</i>
+                  <div className="content">
+                    <h2 className="secondary-accent">10 Days of Martians</h2>
+                    <p>
+                      Enter our giveaways for the 10 Days of Martians for a chance to win one of the minted NFTs before release
+                    </p>
+                  </div>
+                </div>
+                <div className="container right">
+                  <div className="date">PHASE 4</div>
+                  <i className="icon">🛸</i>
+                  <div className="content">
+                    <h2 className="secondary-accent">Launch Day!</h2>
+                    <p>
+                      Dec 17th - The rest of the M3TA MARTIANS touch down! Join us as we launch our NFT and start our invasion. Rarity list
+                      to be released after 80% sold
+                    </p>
+                  </div>
+                </div>
+                <div className="container left">
+                  <div className="date">PHASE 5</div>
+                  <i className="icon">👽</i>
+                  <div className="content">
+                    <h2 className="secondary-accent">Beyond Launch</h2>
+                    <p>
+                      Every holder of a M3TA MARTIAN will be able to participate in the creation of our next 5000 launch. Stay
+                      tuned for more information on the utility use of your M3TA MARTIAN in the Metaverse.
+                    </p>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+        <div id="team">
+            <h1>THE TEAM</h1>
+            <p> A couple of martians wanting to be apart of the WEB3 transition and interested in bringing education into this space.
+                The community forges on with you! Join us on Discord & Twitter for annoucements, giveaways, & roadmap unlocks</p>
+
+            <div className="links">
+                <a href="https://discord.gg/xMzSrvs2fb" target="_blank"><i className="fab fa-discord"></i></a>
+                <a href="https://twitter.com/M3taMartians" target="_blank"><i className="fab fa-twitter"></i></a>
+            </div>
+            <div className="team-info">
+               
+                <div className="team-profile">
+                    <img src="./config/images/mrsm3ta.png" alt="M3TA MARTIANS"/>
+                    <p>Mrs. M3ta</p>
+                    <p className="accent">Developer & Project Manager</p>
+                </div>
+                <div className="team-profile">
+                    <img src="./config/images/m3taone.png" alt="M3TA MARTIANS"/>
+                    <p>M3ta One</p>
+                    <p className="accent">The Founder & The Analyst</p>
+                </div>
+            </div>
+      
+           
+        </div>
+
+        {CONFIG.SHOW_BACKGROUND == false &&
+          <div className="other">
+          <div className="minter">
+        <StyledLink target={"_blank"} href={CONFIG.SCAN_LINK}>
                 {truncate(CONFIG.CONTRACT_ADDRESS, 15)}
               </StyledLink>
-            </s.TextDescription>
-            <s.SpacerSmall />
-            {Number(data.totalSupply) >= CONFIG.MAX_SUPPLY ? (
+
+              {Number(data.totalSupply) >= CONFIG.MAX_SUPPLY ? (
               <>
                 <s.TextTitle
                   style={{ textAlign: "center", color: "var(--accent-text)" }}
@@ -306,7 +421,7 @@ function App() {
                           {blockchain.errorMsg}
                         </s.TextDescription>
                       </>
-                    ) : null}
+                    ) : 'coonected'}
                   </s.Container>
                 ) : (
                   <>
@@ -315,7 +430,7 @@ function App() {
                         textAlign: "center",
                         color: "var(--accent-text)",
                       }}
-                    >
+                    > what is here
                       {feedback}
                     </s.TextDescription>
                     <s.SpacerMedium />
@@ -367,44 +482,21 @@ function App() {
                 )}
               </>
             )}
-            <s.SpacerMedium />
-          </s.Container>
-          <s.SpacerLarge />
-          <s.Container flex={1} jc={"center"} ai={"center"}>
-            <StyledImg
-              alt={"example"}
-              src={"/config/images/example.gif"}
-              style={{ transform: "scaleX(-1)" }}
-            />
-          </s.Container>
-        </ResponsiveWrapper>
-        <s.SpacerMedium />
-        <s.Container jc={"center"} ai={"center"} style={{ width: "70%" }}>
-          <s.TextDescription
-            style={{
-              textAlign: "center",
-              color: "var(--primary-text)",
-            }}
-          >
-            Please make sure you are connected to the right network (
-            {CONFIG.NETWORK.NAME} Mainnet) and the correct address. Please note:
-            Once you make the purchase, you cannot undo this action.
-          </s.TextDescription>
-          <s.SpacerSmall />
-          <s.TextDescription
-            style={{
-              textAlign: "center",
-              color: "var(--primary-text)",
-            }}
-          >
-            We have set the gas limit to {CONFIG.GAS_LIMIT} for the contract to
-            successfully mint your NFT. We recommend that you don't lower the
-            gas limit.
-          </s.TextDescription>
-        </s.Container>
-      </s.Container>
-    </s.Screen>
-  );
+            </div>
+                <p>Please make sure you are connected to the right network (
+                {CONFIG.NETWORK.NAME} Mainnet) and the correct address. Please note:
+                Once you make the purchase, you cannot undo this action.</p>
+            </div>
+        }
+        
+        <div className="bottom-banner">
+    
+        </div>
+    </main>
+
+    </div>
+
+      );
 }
 
 export default App;
